@@ -6,6 +6,7 @@
 package javaproyecto;
 
 import java.awt.FlowLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 /**
@@ -22,6 +23,7 @@ public class splash {
         sframe (String s){
             super(s);
             setLayout (new FlowLayout());
+            ImageIcon c1 = new ImageIcon(ClassLoader.getSystemResource("icon/img1.jpg"));
             
     }
 }
