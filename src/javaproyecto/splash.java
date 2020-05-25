@@ -16,6 +16,7 @@ import javax.swing.JLabel;
  */
 class splash {
 
+    //method to create frame with size of execution
     public static void main(String s[]) {
         sframe f1 = new sframe("Sistema de Calcular nominas");
         f1.setVisible(true);
@@ -33,6 +34,7 @@ class splash {
     }
 }
 
+// class of frame how frame open and create thread and also add image of frame 
 class sframe extends JFrame implements Runnable {
 
     Thread t1;
@@ -50,11 +52,12 @@ class sframe extends JFrame implements Runnable {
         t1.start();
     }
 
+    
     public void run() {
         try {
             Thread.sleep(0);
             this.setVisible(rootPaneCheckingEnabled);
-            login f1 = new login();
+            iniciar_sesion f1 = new iniciar_sesion() {};
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -17,12 +17,14 @@ import java.sql.Statement;
  */
 public class conecion_bbdd {
 
+    //here i have attributes of connection and statement as well user ,password and database that i have in my database
     private final static String user = "root";
     private final static String password = "";
     private final static String database = "jdbc:mysql://localhost:3306/proyecto_java";
     public Connection c;
     public Statement s;
 
+    //getter of attributes
     public static String getUser() {
         return user;
     }
@@ -35,6 +37,7 @@ public class conecion_bbdd {
         return database;
     }
 
+    //method to run statements 
     public static void conn() throws SQLException, IOException {
         try {
             Connection con = DriverManager.getConnection(getDatabase(), getUser(), getPassword());
@@ -45,12 +48,4 @@ public class conecion_bbdd {
     }
 }
 
-/*
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            c = DriverManager.getConnection("jdbc:mysql:///proyecto_java", "root", "");
-            s = c.createStatement();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }*/
+
