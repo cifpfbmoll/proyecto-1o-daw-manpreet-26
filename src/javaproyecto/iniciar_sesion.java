@@ -5,87 +5,49 @@
  */
 package javaproyecto;
 
-import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.sql.ResultSet;
-import javax.swing.*;
+import java.util.Scanner;
+
+
 
 /**
  *
  * @author luban
  */
-public class iniciar_sesion extends JFrame implements ActionListener {
-
+public class iniciar_sesion {
+    Scanner lector = new Scanner (System.in);
     
-    JLabel l1, l2;
-    JTextField t1;
-    JPasswordField t2;
-    JButton b1, b2;
+    private String usuario;
+    private String contraseña;
 
-    //this is for how login page will work
-    iniciar_sesion() {
-        super("Página de inicio de sesión");
-        setLayout(new BorderLayout());
-        t2 = new JPasswordField(5);
-        t1 = new JTextField(5);
-        JLabel l = new JLabel(new ImageIcon(ClassLoader.getSystemResource("icon\\im2.jpg")));
-
-        b1 = new JButton("Inicia");
-        b2 = new JButton("Cancel");
-
-        b1.addActionListener(this);
-        b2.addActionListener(this);
-
-        JPanel p1, p2, p3, p4;
-        p1 = new JPanel();
-        p2 = new JPanel();
-        p3 = new JPanel();
-        p4 = new JPanel();
-
-        add(l, BorderLayout.WEST);
-
-        p2.add(new JLabel("Usuario  "));
-        p2.add(t1);
-        p2.add(new JLabel("Contraseña "));
-        p2.add(t2);
-        add(p2, BorderLayout.CENTER);
-
-        p4.add(b1);
-        p4.add(b2);
-
-        add(p4, BorderLayout.SOUTH);
-
-        setSize(400, 250);
-        setLocation(600, 400);
-        setVisible(true);
-
+    public iniciar_sesion(String usuario, String contraseña) {
+        this.usuario = usuario;
+        this.contraseña = contraseña;
     }
 
-    //this method is to run query and create pop message
-    @Override
-    public void actionPerformed(ActionEvent ae) {
-        try {
-            conecion_bbdd c1 = new conecion_bbdd();
-            String u = t1.getText();
-            String v = t2.getText();
+    public iniciar_sesion() {
+    }
 
-            String q = "select * from iniciar_sesion where usuario='" + u + "' and contraseña='" + v + "'";
+    
+    public String getUsuario() {
+        return usuario;
+    }
 
-            ResultSet rs = c1.s.executeQuery(q); 
-            if (rs.next()) {
-                new proyecto().setVisible(true);
-                setVisible(false);
-            } else {
-                JOptionPane.showMessageDialog(null, "Invalido usuario y contraseña");
-                setVisible(false);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
     }
     
-    public static void main(String[] args){
-        new iniciar_sesion() {};
+    public static void iniciar_sesion () {
+        System.out.println("Usuario : ");
+        System.out.println("Contraseña : ");
+        
+        
     }
 }
