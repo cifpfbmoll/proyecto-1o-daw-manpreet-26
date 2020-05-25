@@ -12,8 +12,10 @@ import java.util.Scanner;
  * @author luban
  */
 public class registrar {
-        Scanner lector = new Scanner(System.in);
     
+    Scanner lector = new Scanner(System.in);
+    
+    private int id = 1;
     private String nombre;
     private String apellido1;
     private String apellido2;
@@ -23,12 +25,21 @@ public class registrar {
     public registrar() {
     }
 
-    public registrar(String nombre, String apellido1, String apellido2, String nif, String fecha_nacimiento) {
+    public registrar(int id, String nombre, String apellido1, String apellido2, String nif, String fecha_nacimiento) {
+        this.id = id++;
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
         this.nif = nif;
         this.fecha_nacimiento = fecha_nacimiento;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {
