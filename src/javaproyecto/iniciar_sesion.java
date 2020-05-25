@@ -44,10 +44,12 @@ public class iniciar_sesion {
         this.contraseña = contraseña;
     }
     
-    public static void iniciar_sesion () {
+    public void inicia () {
         System.out.println("Usuario : ");
+        this.setUsuario(lector.next());
         System.out.println("Contraseña : ");
+        this.setContraseña(lector.next());
         
-        
+       
     }
 }
