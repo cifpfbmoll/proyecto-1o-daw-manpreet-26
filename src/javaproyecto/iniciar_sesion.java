@@ -5,17 +5,18 @@
  */
 package javaproyecto;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Scanner;
-
-
 
 /**
  *
  * @author luban
  */
 public class iniciar_sesion {
-    Scanner lector = new Scanner (System.in);
-    
+
+    Scanner lector = new Scanner(System.in);
+
     private String usuario;
     private String contraseña;
 
@@ -27,7 +28,6 @@ public class iniciar_sesion {
     public iniciar_sesion() {
     }
 
-    
     public String getUsuario() {
         return usuario;
     }
@@ -43,13 +43,25 @@ public class iniciar_sesion {
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
-    
-    public void inicia () {
+
+    public void inicia() throws SQLException {
+
         System.out.println("Usuario : ");
         this.setUsuario(lector.next());
         System.out.println("Contraseña : ");
         this.setContraseña(lector.next());
-        
-       
+
+        if (usuario != null && contraseña != null) {
+            String q = "select * from iniciar_sesion where usuario = '" + usuario + " ' and contraseña = ' " + contraseña + " '";
+            conecion_bbdd c1 = new conecion_bbdd();
+            ResultSet rs = c1.st.executeQuery(q);
+
+            if (rs.next()) {
+                System.out.println("Menu");
+            } else {
+                System.out.println("Invalido usuario o contraseña.Introduce otra vez");
+            }
+
+        }
     }
 }

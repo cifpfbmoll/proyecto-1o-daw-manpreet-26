@@ -43,7 +43,6 @@ public class conecion_bbdd {
             Connection con = DriverManager.getConnection(getDatabase(), getUser(), getPassword());
             Statement st = con.createStatement();
         } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
 }

@@ -5,6 +5,7 @@
  */
 package javaproyecto;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 /**
@@ -15,14 +16,22 @@ public class JavaProyecto {
 
     /**
      * @param args the command line arguments
+     * 
      */
-    public static void main(String[] args) {
+    public static void main(String[] args)  {
         int opcion;
         Scanner lector = new Scanner(System.in);
         boolean salir = false;
 
+        
         while (!salir) {
-            System.out.println("Iniciar Sesion");
+            
+            iniciar_sesion ini = new iniciar_sesion();
+            try {
+                ini.inicia();
+            } catch (SQLException ex) {
+                ex.getMessage();
+            }
             System.out.println("Registrar");
             System.out.println("Actualizar");
             System.out.println("Reporte");
@@ -32,9 +41,8 @@ public class JavaProyecto {
             opcion = lector.nextInt();
             switch (opcion) {
 
+               
                 case 1:
-                    break;
-                case 2:
                     int opcions;
                     boolean exit = false;
                     while (!exit) {
@@ -51,7 +59,7 @@ public class JavaProyecto {
                     }
 
                     break;
-                case 3:
+                case 2:
                     int alternativa;
                     boolean salida = false;
                     while (!salida) {
@@ -68,7 +76,7 @@ public class JavaProyecto {
                     }
 
                     break;
-                case 4:
+                case 3:
                     int opciones;
                     boolean dejar = false;
                     while (!dejar) {
@@ -85,7 +93,7 @@ public class JavaProyecto {
 
                     break;
 
-                case 5:
+                case 4:
                     salir = true;
                     break;
             }
