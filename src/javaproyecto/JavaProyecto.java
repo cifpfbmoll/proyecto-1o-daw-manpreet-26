@@ -18,7 +18,7 @@ public class JavaProyecto {
      * @param args the command line arguments
      * 
      */
-    public static void main(String[] args)  {
+    public static void main(String[] args) throws SQLException  {
         int opcion;
         Scanner lector = new Scanner(System.in);
         boolean salir = false;
@@ -27,11 +27,9 @@ public class JavaProyecto {
         while (!salir) {
             
             iniciar_sesion ini = new iniciar_sesion();
-            try {
-                ini.inicia();
-            } catch (SQLException ex) {
-                ex.getMessage();
-            }
+            ini.inicia();
+            
+            
             System.out.println("Registrar");
             System.out.println("Actualizar");
             System.out.println("Reporte");
@@ -96,6 +94,9 @@ public class JavaProyecto {
                 case 4:
                     salir = true;
                     break;
+                
+                default:
+                    System.out.println("Opción no válida");
             }
 
         }

@@ -5,9 +5,10 @@
  */
 package javaproyecto;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+
 import java.util.Scanner;
 
 /**
@@ -47,16 +48,19 @@ public class iniciar_sesion {
 
     public void inicia() throws SQLException {
 
+        
         System.out.println("Usuario : ");
         this.setUsuario(lector.next());
         System.out.println("Contraseña : ");
         this.setContraseña(lector.next());
 
         if (usuario != null && contraseña != null) {
-            String q = "select * from iniciar_sesion where usuario = '" + usuario + " ' and contraseña = ' " + contraseña + " '";
-            conecion_bbdd c1 = new conecion_bbdd();
-            Statement st = new Statement() {};
-            ResultSet rs = c1.st.executeQuery(q);
+            String query  = "select * from iniciar_sesion where" + usuario + "=?" + "and" + contraseña + "=?";
+            PreparedStatement ps = conecion_bbdd.establecer_connecion().prepareStatement(query);
+            
+            ps.setString(1, usuario);
+            ps.setString(2, contraseña);
+            ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
                 System.out.println("Menu");
