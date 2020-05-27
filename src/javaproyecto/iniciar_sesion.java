@@ -45,8 +45,9 @@ public class iniciar_sesion {
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
-
-    public void inicia() throws SQLException {
+//Rafa: el método inicia lo haría static, te lo cambio, así cuando tengas que llamarlo no necesitas realizar una instancia
+    // no hace falta. Además, le debes pasar una conexión, te lo cambio.
+    public static void inicia(Connection miconexion) throws SQLException {
 
         
         System.out.println("Usuario : ");
@@ -56,7 +57,7 @@ public class iniciar_sesion {
 
         if (usuario != null && contraseña != null) {
             String query  = "select * from iniciar_sesion where" + usuario + "=?" + "and" + contraseña + "=?";
-            PreparedStatement ps = conecion_bbdd.establecer_connecion().prepareStatement(query);
+            PreparedStatement ps = miconexion.prepareStatement(query);//Rafa:hacemos elpreparedStatement a partir de la conexión
             
             ps.setString(1, usuario);
             ps.setString(2, contraseña);
