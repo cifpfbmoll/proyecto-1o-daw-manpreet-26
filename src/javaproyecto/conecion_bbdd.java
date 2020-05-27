@@ -5,11 +5,9 @@
  */
 package javaproyecto;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 /**
  *
@@ -21,8 +19,8 @@ public class conecion_bbdd {
     private final static String user = "root";
     private final static String password = "";
     private final static String database = "jdbc:mysql://localhost:3306/proyecto_java";
+
     public Connection c;
-    public Statement s;
 
     //getter of attributes
     public static String getUser() {
@@ -37,14 +35,9 @@ public class conecion_bbdd {
         return database;
     }
 
-    //method to run statements 
-    public static void conn() throws SQLException, IOException {
-        try {
-            Connection con = DriverManager.getConnection(getDatabase(), getUser(), getPassword());
-            Statement st = con.createStatement();
-        } catch (SQLException e) {
-        }
+    public static Connection establecer_connecion() throws SQLException {
+        Connection con = DriverManager.getConnection(getDatabase(), getUser(), getPassword());
+        return con;
     }
+
 }
-
-

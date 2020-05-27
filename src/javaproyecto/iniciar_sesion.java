@@ -7,6 +7,7 @@ package javaproyecto;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Scanner;
 
 /**
@@ -54,6 +55,7 @@ public class iniciar_sesion {
         if (usuario != null && contraseña != null) {
             String q = "select * from iniciar_sesion where usuario = '" + usuario + " ' and contraseña = ' " + contraseña + " '";
             conecion_bbdd c1 = new conecion_bbdd();
+            Statement st = new Statement() {};
             ResultSet rs = c1.st.executeQuery(q);
 
             if (rs.next()) {
