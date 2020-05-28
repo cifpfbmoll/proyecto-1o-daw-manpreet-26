@@ -7,7 +7,6 @@ package javaproyecto;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /**
@@ -36,7 +35,7 @@ public class conecion_bbdd {
         return database;
     }
 
-    public static Connection establecer_connecion() throws SQLException {
+    public static Connection establecerConexion() throws SQLException {
         Connection con = DriverManager.getConnection(getDatabase(), getUser(), getPassword());
         return con;
     }

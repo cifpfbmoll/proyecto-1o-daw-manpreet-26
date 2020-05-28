@@ -5,16 +5,24 @@
  */
 package javaproyecto;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author luban
  */
-public class SalarioEmpleado extends registrar {
+public class SalarioEmpleado extends Empleado {
 
     private float salarioBasico;
     private float irpf;
     private float baseDeCotitzacio;
     private float salarioNet;
+
+    public SalarioEmpleado(String nombre, String apellido1, String apellido2, String nif, String fecha_nacimiento, String correo, String provincia, String direccion, String genero, int movil) {
+        super(nombre, apellido1, apellido2, nif, fecha_nacimiento, correo, provincia, direccion, genero, movil);
+    }
 
     public SalarioEmpleado() {
     }
@@ -24,10 +32,6 @@ public class SalarioEmpleado extends registrar {
         this.irpf = irpf;
         this.baseDeCotitzacio = baseDeCotitzacio;
         this.salarioNet = salarioNet;
-    }
-    
-    public SalarioEmpleado(int id, String nombre, String apellido1, String apellido2, String nif, String fecha_nacimiento) {
-        super(id, nombre, apellido1, apellido2, nif, fecha_nacimiento);
     }
 
     public float getSalarioBasico() {
@@ -53,7 +57,7 @@ public class SalarioEmpleado extends registrar {
     public void setBaseDeCotitzacio(float baseDeCotitzacio) {
         this.baseDeCotitzacio = baseDeCotitzacio;
     }
-    
+
     public float getSalarioNet() {
         return salarioNet;
     }
@@ -61,8 +65,8 @@ public class SalarioEmpleado extends registrar {
     public void setSalarioNet(float salarioNet) {
         this.salarioNet = salarioNet;
     }
-    
-    public void agragarNuevoEmpleado(){
+
+    public void agragarNuevoEmpleado() {
         System.out.println("El salario base del empleado es : ");
         this.setSalarioBasico(lector.nextFloat());
         System.out.println("La irpf es : ");
@@ -70,10 +74,25 @@ public class SalarioEmpleado extends registrar {
         System.out.println("La base de cotitzación es : ");
         this.setBaseDeCotitzacio(lector.nextFloat());
     }
-    
-    public void calculaSalario(){
-        
+
+    public void calculaSalario() {
+
         salarioNet = (salarioBasico + baseDeCotitzacio - irpf);
         System.out.println("El salario net es : " + salarioNet);
+    }
+    
+    public static void salarioSql() throws SQLException{
+        String query = "insert into salario (salario_base,irpf,base_de_cotitzacion,salario_net)" + "values(?,?,?.?)";
+        
+        PreparedStatement ps = conecion_bbdd.establecerConexion().prepareStatement(query);
+        
+        
+        ResultSet rs = ps.executeQuery();
+        
+        if(rs.next()){
+            System.out.println("He insertado");
+        }else{
+            System.out.println("tiene error");
+        }
     }
 }
