@@ -148,7 +148,7 @@ public class Empleado {
             System.out.println("La fecha de nacimiento del empleado es : ");
             this.setFecha_nacimiento(lector.next());
 
-            String query = "insert into empleado (nombre,primer_apellido,segundo_apellido,nif,fecha_de_naciemiento)" + "values (?,?,?,?,?)";
+            String query = "insert into empleado (nombre,primer_apellido,segundo_apellido,nif,fecha_de_naciemiento) values (?,?,?,?,?)";
             PreparedStatement pst = conecion_bbdd.establecerConexion().prepareStatement(query);
 
             ResultSet rst = pst.executeQuery();

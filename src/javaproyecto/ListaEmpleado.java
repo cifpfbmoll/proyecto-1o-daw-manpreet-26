@@ -7,6 +7,7 @@ package javaproyecto;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,7 +18,7 @@ import java.sql.SQLException;
  */
 public class ListaEmpleado {
 
-    public static void salarioSql() throws SQLException {
+    public static void listaDeEmpleado() throws SQLException, IOException {
         String query = "select * from empleados";
         PreparedStatement ps = conecion_bbdd.establecerConexion().prepareStatement(query);
 
@@ -25,8 +26,10 @@ public class ListaEmpleado {
 
         while (rs.next()) {
             
-            FileWriter fstream = new FileWriter(file);
+            FileWriter fstream = new FileWriter("manpreet.txt");
             BufferedWriter out = new BufferedWriter(fstream);
+            
+            System.out.println("Completed writing into text file...");
         }
     }
 }

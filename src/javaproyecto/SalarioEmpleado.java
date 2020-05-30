@@ -81,12 +81,15 @@ public class SalarioEmpleado extends Empleado {
         System.out.println("El salario net es : " + salarioNet);
     }
     
-    public static void salarioSql() throws SQLException{
-        String query = "insert into salario (salario_base,irpf,base_de_cotitzacion,salario_net)" + "values(?,?,?.?)";
+    public void salarioSql() throws SQLException{
+        String query = "insert into salario (salario_base,irpf,base_de_cotitzacion,salario_net) values (?,?,?,?)";
         
         PreparedStatement ps = conecion_bbdd.establecerConexion().prepareStatement(query);
         
-        
+        ps.setFloat(1, salarioBasico);
+        ps.setFloat(2, irpf );
+        ps.setFloat(3, baseDeCotitzacio );
+        ps.setFloat(4, salarioNet);
         ResultSet rs = ps.executeQuery();
         
         if(rs.next()){
