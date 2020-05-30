@@ -18,12 +18,12 @@ public class Empleado {
 
     Scanner lector = new Scanner(System.in);
 
-    private int id = 1;
+    private int id;
     private String nombre;
     private String apellido1;
     private String apellido2;
     private String nif;
-    private String fecha_nacimiento;
+    private String fechaDeNacimiento;
     private String correo;
     private String provincia;
     private String direccion;
@@ -38,7 +38,7 @@ public class Empleado {
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
         this.nif = nif;
-        this.fecha_nacimiento = fecha_nacimiento;
+        this.fechaDeNacimiento = fecha_nacimiento;
         this.correo = correo;
         this.provincia = provincia;
         this.direccion = direccion;
@@ -86,14 +86,6 @@ public class Empleado {
         this.movil = movil;
     }
 
-    public int getId() {
-        return id++;
-    }
-
-    public void setId(int id) {
-        this.id = id++;
-    }
-
     public String getNombre() {
         return nombre;
     }
@@ -126,17 +118,26 @@ public class Empleado {
         this.nif = nif;
     }
 
-    public String getFecha_nacimiento() {
-        return fecha_nacimiento;
+    public String getFechaDeNacimiento() {
+        return fechaDeNacimiento;
     }
 
-    public void setFecha_nacimiento(String fecha_nacimiento) {
-        this.fecha_nacimiento = fecha_nacimiento;
+    public void setFechaDeNacimiento(String fechaDeNacimiento) {
+        this.fechaDeNacimiento = fechaDeNacimiento;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    
     public void agregarNuevoEmpleado() {
         try {
-
+            this.id = id++;  //autoincrement
             System.out.println("El nombre del empleado es : ");
             this.setNombre(lector.next());
             System.out.println("El primer apellido del empleado es : ");
@@ -146,11 +147,21 @@ public class Empleado {
             System.out.println("El NIF del empleado es : ");
             this.setNif(lector.next());
             System.out.println("La fecha de nacimiento del empleado es : ");
-            this.setFecha_nacimiento(lector.next());
+            this.setFechaDeNacimiento(lector.next());
 
-            String query = "insert into empleado (nombre,primer_apellido,segundo_apellido,nif,fecha_de_naciemiento) values (?,?,?,?,?)";
+            String query = "insert into empleado (nombre,apellido1,apellido2,nif,fechaDeNaciemiento,genero,movil,provincia,correo,direccion) values (?,?,?,?,?,?,?,?,?,?) where id =?";
             PreparedStatement pst = conecion_bbdd.establecerConexion().prepareStatement(query);
 
+            pst.setString(1, nombre);
+            pst.setString(2, apellido1);
+            pst.setString(3, apellido2);
+            pst.setString(4, nif);
+            pst.setString(5, fechaDeNacimiento);
+            pst.setString(6, genero);
+            pst.setInt(7, movil);
+            pst.setString(8, provincia);
+            pst.setString(9, correo);
+            pst.setString(10, direccion);
             ResultSet rst = pst.executeQuery();
 
             if (rst.next()) {
