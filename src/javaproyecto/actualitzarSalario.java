@@ -15,8 +15,15 @@ import java.sql.SQLException;
  */
 public class actualitzarSalario {
 
+    /**
+     * el objecto de la clase SalarioEmpleado
+     */
     SalarioEmpleado salarioDeEmpleado = new SalarioEmpleado();
 
+    /**
+     * metodo para actualitzar salario de los empleados
+     * @throws java.sql.SQLException esto es para buscar errores algo
+    */
     public void actulitzaSalarioDeEmpleado() throws SQLException {
         String query = "update salario set salarioBascio = ?,irpf = ?,baseDeCotitzacio = ? where id = ?";
         PreparedStatement ps = conecion_bbdd.establecerConexion().prepareStatement(query);

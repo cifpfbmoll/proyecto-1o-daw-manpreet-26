@@ -20,8 +20,16 @@ import java.util.Scanner;
  */
 public class generarNomina {
 
+    /**
+     * tenemos scanner para introducer el tipo de static
+     */
     static Scanner lector = new Scanner(System.in);
 
+    /**
+     * metodo para generar nomina del empleado
+     * @throws SQLException excepcion dele tipo sql
+     * @throws IOException excepcion 
+     */
     public void generaNomina() throws SQLException, IOException {
 
         Empleado emp1 = new Empleado();
@@ -38,6 +46,7 @@ public class generarNomina {
         PreparedStatement ps = conecion_bbdd.establecerConexion().prepareStatement(q);
         rst = pst.executeQuery();
 
+        
         while (rst.next()) {
             FileWriter fstream = new FileWriter("manpreet2.txt");
             BufferedWriter br = new BufferedWriter(fstream);

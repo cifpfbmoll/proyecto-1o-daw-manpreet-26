@@ -16,8 +16,16 @@ import java.util.logging.Logger;
  * @author luban
  */
 public class listaDeAsistencia {
+    /**
+     * tenemos variables i,j
+     * y 
+     * string 
+     */
     String a[][];
     int i,j=0;
+    /**
+     * el metodo para lista de asistencia de los empleados
+     */
     public void listaDeAsistencia() {
         try {
             System.out.println("lista de asistencia");

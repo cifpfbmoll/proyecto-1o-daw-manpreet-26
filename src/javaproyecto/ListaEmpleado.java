@@ -18,6 +18,11 @@ import java.sql.SQLException;
  */
 public class ListaEmpleado {
 
+    /**
+     * EL metodo es para mostrar lista de los empleados de sistema.
+     * @throws SQLException este excepcion es para query de sql
+     * @throws IOException esto excepcion es interrumpted exception
+     */
     public static void listaDeEmpleado() throws SQLException, IOException {
         String query = "select * from empleados";
         PreparedStatement ps = conecion_bbdd.establecerConexion().prepareStatement(query);

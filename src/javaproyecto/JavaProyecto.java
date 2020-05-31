@@ -17,15 +17,17 @@ import static javaproyecto.conecion_bbdd.establecerConexion;
  */
 public class JavaProyecto {
 
-    /**
-     * @param args the command line arguments
-     *
-     */
     static Scanner lector = new Scanner(System.in);
 
+    /**
+     * metodo main del proyecto que primero hace conecion con base de dato,si establece conecion,
+     * despues de esto podemos trabajar con el proyecto y ejecuta el menu.....
+     * @param args the command line arguments
+     * @throws SQLException excepcion de sql
+     * @throws IOException excepcion de io
+     */
     public static void main(String[] args) throws SQLException, IOException {
         boolean salir = false;
-        ListaEmpleado.listaDeEmpleado();
 
         while (!salir) {
 

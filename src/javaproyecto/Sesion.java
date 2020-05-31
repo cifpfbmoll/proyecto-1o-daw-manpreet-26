@@ -20,6 +20,12 @@ public class Sesion {
 
     static Scanner lector = new Scanner(System.in);
 
+    /**
+     * metodo para iniciar sesion  de los empleados despues de hacer conexion
+     * @param miconexion nombre de Connection 
+     * @return  sesion es verdadero o falso
+     * @throws SQLException excepcion
+     */
     public static boolean iniciarSesion(Connection miconexion) throws SQLException {
 
         boolean ifSesion = false;

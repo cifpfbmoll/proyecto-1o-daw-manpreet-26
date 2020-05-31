@@ -22,19 +22,35 @@ public class conecion_bbdd {
 
     public Connection c;
 
-    //getter of attributes
+    /**
+     * getter de user de sql
+     * @return user de sql 
+     */
     public static String getUser() {
         return user;
     }
 
+    /**
+     * getter de contraseña de sql
+     * @return contraseña de sql
+     */
     public static String getPassword() {
         return password;
     }
 
+    /**
+     * setter de base de dato de sql
+     * @return  base de dato de sql
+     */
     public static String getDatabase() {
         return database;
     }
 
+    /**
+     * el metodo para hacer conecion con sql
+     * @return conecion
+     * @throws SQLException excepcion
+     */
     public static Connection establecerConexion() throws SQLException {
         Connection con = DriverManager.getConnection(getDatabase(), getUser(), getPassword());
         return con;

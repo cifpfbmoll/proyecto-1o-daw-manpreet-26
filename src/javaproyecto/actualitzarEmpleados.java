@@ -13,7 +13,10 @@ import java.sql.SQLException;
  * @author luban
  */
 public class actualitzarEmpleados {
-    
+    /**
+     * metodo para actualitzar los datos de los empelados
+     * @throws SQLException este excepcion es de tipo de sql
+     */
     public void actualizarEmpleado() throws SQLException{
        
         Empleado antiEmp = new Empleado();
