@@ -14,7 +14,7 @@ import java.sql.SQLException;
  */
 public class actualizarEmpleados {
     
-    public String actualizarEmpleado() throws SQLException{
+    public void actualizarEmpleado() throws SQLException{
        
         Empleado antiEmp = new Empleado();
         String query = "update empleado set nombre = ?,apellido1 = ?,apellido2 = ?,genero = ?,movil = ?,correo = ?,provincia = ?,nif = ?,fechaDeNacimiento = ?,direccion = ? where id = ?";
@@ -33,7 +33,7 @@ public class actualizarEmpleados {
         pst.setString(10, antiEmp.getDireccion());
         
        pst.executeUpdate();
-        return "ya esta";
+        
         
     }
 }
