@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 public class listaDeAsistencia {
     String a[][];
     int i,j=0;
-    listaDeAsistencia() {
+    public void listaDeAsistencia() {
         try {
             System.out.println("lista de asistencia");
             
@@ -37,7 +37,6 @@ public class listaDeAsistencia {
         } catch (SQLException ex) {
             ex.getErrorCode();
         }
-        
-        
-    }
+        }
+   
 }

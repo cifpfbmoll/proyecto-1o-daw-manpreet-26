@@ -12,7 +12,7 @@ import java.sql.SQLException;
  *
  * @author luban
  */
-public class actualizarEmpleados {
+public class actualitzarEmpleados {
     
     public void actualizarEmpleado() throws SQLException{
        

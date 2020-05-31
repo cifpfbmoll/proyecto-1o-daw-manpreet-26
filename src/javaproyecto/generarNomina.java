@@ -22,7 +22,7 @@ public class generarNomina {
 
     static Scanner lector = new Scanner(System.in);
 
-    generarNomina() throws SQLException, IOException {
+    public void generaNomina() throws SQLException, IOException {
 
         Empleado emp1 = new Empleado();
         SalarioEmpleado salarioEmp = new SalarioEmpleado();

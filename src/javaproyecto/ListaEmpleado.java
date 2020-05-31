@@ -27,7 +27,9 @@ public class ListaEmpleado {
         while (rs.next()) {
             
             FileWriter fstream = new FileWriter("manpreet.txt");
-            BufferedWriter out = new BufferedWriter(fstream);
+            BufferedWriter br = new BufferedWriter(fstream);
+            
+            
             
             System.out.println("Completed writing into text file...");
         }

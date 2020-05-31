@@ -26,7 +26,7 @@ public class JavaProyecto {
     public static void main(String[] args) throws SQLException, IOException {
         boolean salir = false;
         ListaEmpleado.listaDeEmpleado();
-        
+
         while (!salir) {
 
             Connection miConexion = establecerConexion();
@@ -50,6 +50,7 @@ public class JavaProyecto {
                         System.out.println("1. AgregarNuevo Empleado");
                         System.out.println("2. Salario del Empleado");
                         System.out.println("3. Lista de Empleados");
+                        System.out.println("4. Volver Menu principal");
                         opcions = lector.nextInt();
                         switch (opcions) {
                             case 1:
@@ -63,7 +64,12 @@ public class JavaProyecto {
                             case 3:
                                 ListaEmpleado.listaDeEmpleado();
                                 break;
-
+                            case 4:
+                                System.out.println("Has selecionado opcion de volver a menu principal");
+                                exit = true;
+                                break;
+                            default:
+                                System.out.println("Opción no válida");
                         }
                     }
 
@@ -75,12 +81,27 @@ public class JavaProyecto {
                         System.out.println("1. Actualizar salario");
                         System.out.println("2. Actualizar los datos de los empleados");
                         System.out.println("3. Asistencia");
+                        System.out.println("Volver a menu principal");
                         alternativa = lector.nextInt();
                         switch (alternativa) {
                             case 1:
-                                actualizarEmpleados actEmp = new actualizarEmpleados();
+                                actualitzarSalario salarioEmp = new actualitzarSalario();
+                                salarioEmp.actulitzaSalarioDeEmpleado();
+                                break;
+                            case 2:
+                                actualitzarEmpleados actEmp = new actualitzarEmpleados();
                                 actEmp.actualizarEmpleado();
                                 break;
+                            case 3:
+                                asistencia asis = new asistencia();
+                                asis.asistenciaEmp();
+                                break;
+                            case 4:
+                                System.out.println("Has selecionado opcion de volver a menu principal");
+                                salida = true;
+                                break;
+                            default:
+                                System.out.println("Opción no válida");
 
                         }
                     }
@@ -92,12 +113,23 @@ public class JavaProyecto {
                     while (!dejar) {
                         System.out.println("Generar Nomina");
                         System.out.println("Lista de asistencia de los empleados");
+                        System.out.println("Volver al Menu principal");
                         opciones = lector.nextInt();
                         switch (opciones) {
                             case 1:
-
+                                generarNomina nomina = new generarNomina();
+                                nomina.generaNomina();
                                 break;
-
+                            case 2:
+                                listaDeAsistencia listAsistencia = new listaDeAsistencia();
+                                listAsistencia.listaDeAsistencia();
+                                break;
+                            case 3:
+                                System.out.println("Has selecionado la opcion para Vover menu principal");
+                                dejar = true;
+                                break;
+                            default:
+                                System.out.println("Opción no válida");
                         }
                     }
 
