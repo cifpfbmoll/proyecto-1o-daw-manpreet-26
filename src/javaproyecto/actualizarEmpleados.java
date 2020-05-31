@@ -14,7 +14,7 @@ import java.sql.SQLException;
  */
 public class actualizarEmpleados {
     
-    public String actualizarEmpleado(Empleado emp) throws SQLException{
+    public String actualizarEmpleado() throws SQLException{
        
         Empleado antiEmp = new Empleado();
         String query = "update empleado set nombre = ?,apellido1 = ?,apellido2 = ?,genero = ?,movil = ?,correo = ?,provincia = ?,nif = ?,fechaDeNacimiento = ?,direccion = ? where id = ?";

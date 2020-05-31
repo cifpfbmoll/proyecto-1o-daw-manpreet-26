@@ -61,7 +61,7 @@ public class JavaProyecto {
                                 salEmp.salarioSql();
                                 break;
                             case 3:
-                                //ListaEmpleado.listaDeEmpleado();
+                                ListaEmpleado.listaDeEmpleado();
                                 break;
 
                         }
@@ -78,7 +78,8 @@ public class JavaProyecto {
                         alternativa = lector.nextInt();
                         switch (alternativa) {
                             case 1:
-
+                                actualizarEmpleados actEmp = new actualizarEmpleados();
+                                actEmp.actualizarEmpleado();
                                 break;
 
                         }
