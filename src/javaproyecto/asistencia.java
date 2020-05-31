@@ -8,6 +8,7 @@ package javaproyecto;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Date;
 
 /**
  *
@@ -16,11 +17,14 @@ import java.sql.SQLException;
 public class asistencia {
 
     private boolean asistir;
+    private Date fecha;
 
-    public asistencia(boolean asistir) {
+    public asistencia(boolean asistir, Date fecha) {
         this.asistir = asistir;
+        this.fecha = fecha;
     }
 
+    
     public asistencia() {
     }
 
@@ -30,6 +34,14 @@ public class asistencia {
 
     public void setAsistir(boolean asistir) {
         this.asistir = asistir;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
     public void asistenciaEmp() throws SQLException {

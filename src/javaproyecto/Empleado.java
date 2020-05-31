@@ -5,6 +5,7 @@
  */
 package javaproyecto;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,7 +24,7 @@ public class Empleado {
     private String apellido1;
     private String apellido2;
     private String nif;
-    private String fechaDeNacimiento;
+    private Date fechaDeNacimiento;
     private String correo;
     private String provincia;
     private String direccion;
@@ -33,18 +34,20 @@ public class Empleado {
     public Empleado() {
     }
 
-    public Empleado(String nombre, String apellido1, String apellido2, String nif, String fecha_nacimiento, String correo, String provincia, String direccion, String genero, int movil) {
+    public Empleado(int id, String nombre, String apellido1, String apellido2, String nif, Date fechaDeNacimiento, String correo, String provincia, String direccion, String genero, int movil) {
+        this.id = id;
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
         this.nif = nif;
-        this.fechaDeNacimiento = fecha_nacimiento;
+        this.fechaDeNacimiento = fechaDeNacimiento;
         this.correo = correo;
         this.provincia = provincia;
         this.direccion = direccion;
         this.genero = genero;
         this.movil = movil;
     }
+
 
     public String getCorreo() {
         return correo;
@@ -118,14 +121,15 @@ public class Empleado {
         this.nif = nif;
     }
 
-    public String getFechaDeNacimiento() {
+    public Date getFechaDeNacimiento() {
         return fechaDeNacimiento;
     }
 
-    public void setFechaDeNacimiento(String fechaDeNacimiento) {
+    public void setFechaDeNacimiento(Date fechaDeNacimiento) {
         this.fechaDeNacimiento = fechaDeNacimiento;
     }
 
+    
     public int getId() {
         return id;
     }
@@ -156,7 +160,7 @@ public class Empleado {
             pst.setString(2, apellido1);
             pst.setString(3, apellido2);
             pst.setString(4, nif);
-            pst.setString(5, fechaDeNacimiento);
+            pst.setDate(5, fechaDeNacimiento);
             pst.setString(6, genero);
             pst.setInt(7, movil);
             pst.setString(8, provincia);

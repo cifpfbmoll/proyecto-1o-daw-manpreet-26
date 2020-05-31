@@ -29,7 +29,7 @@ public class actualizarEmpleados {
         pst.setString(6, antiEmp.getCorreo());
         pst.setString(7, antiEmp.getProvincia());
         pst.setString(8, antiEmp.getNif());
-        pst.setString(9,antiEmp.getFechaDeNacimiento());
+        pst.setDate(9,antiEmp.getFechaDeNacimiento());
         pst.setString(10, antiEmp.getDireccion());
         
        pst.executeUpdate();
