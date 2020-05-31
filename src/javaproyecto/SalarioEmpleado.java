@@ -20,10 +20,7 @@ public class SalarioEmpleado extends Empleado {
     private float baseDeCotitzacio;
     private float salarioNet;
 
-    public SalarioEmpleado(String nombre, String apellido1, String apellido2, String nif, String fecha_nacimiento, String correo, String provincia, String direccion, String genero, int movil) {
-        super(nombre, apellido1, apellido2, nif, fecha_nacimiento, correo, provincia, direccion, genero, movil);
-    }
-
+    
     public SalarioEmpleado() {
     }
 

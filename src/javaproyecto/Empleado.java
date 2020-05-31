@@ -48,7 +48,6 @@ public class Empleado {
         this.movil = movil;
     }
 
-
     public String getCorreo() {
         return correo;
     }
@@ -151,7 +150,7 @@ public class Empleado {
             System.out.println("El NIF del empleado es : ");
             this.setNif(lector.next());
             System.out.println("La fecha de nacimiento del empleado es : ");
-            this.setFechaDeNacimiento(lector.next());
+            //this.setFechaDeNacimiento(lector.nextLine());
 
             String query = "insert into empleado (nombre,apellido1,apellido2,nif,fechaDeNaciemiento,genero,movil,provincia,correo,direccion) values (?,?,?,?,?,?,?,?,?,?) where id =?";
             PreparedStatement pst = conecion_bbdd.establecerConexion().prepareStatement(query);
