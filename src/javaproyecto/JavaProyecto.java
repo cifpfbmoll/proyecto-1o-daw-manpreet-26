@@ -42,47 +42,49 @@ public class JavaProyecto {
     }
 
     public static boolean mostrarMenuUsuarioRegistrado(Connection miConexion, boolean salir) throws SQLException, IOException {
-
+  
+        boolean salida = false;
         while (miConexion != null) {
             int opcion;
             System.out.println("-----MENU-------");
-            System.out.println("1. Agregar Empleados");
-            System.out.println("2. Actualizar Los datos de los Empleados");
-            System.out.println("3. Generar Nomina");
-            System.out.println("4. Lista De Empleados");
-            System.out.println("5. Salida");
+            System.out.println("1. Agregar Nuevo Empleado");
+            System.out.println("2. Agregar Nuevo Departamento");
+            System.out.println("3. Actualizar Datos de Empleado");
+            System.out.println("4. Actualizar Salario De Empleado");
+            System.out.println("5. Generar Nomina");
+            System.out.println("6. Salida");
             System.out.println("Escribe una de las opciones");
             opcion = lector.nextInt();
             switch (opcion) {
-
                 case 1:
                     Empleado emp = new Empleado();
-                    emp.agregarNuevoEmpleado();
-                            
+                    emp.agregarEmpleado();
+                    salarioEmpleado salEmp = new salarioEmpleado();
+                    salEmp.agregarEmpleado();
                     break;
                 case 2:
-                    actualitzarEmpleados actEmp = new actualitzarEmpleados();
-                    actEmp.actualizarEmpleado();
+                    Departamentos dep = new Departamentos();
+                    dep.agregarDepartamento();
                     break;
                 case 3:
-                    generarNomina generNomina = new generarNomina();
-                    generNomina.generaNomina();
+                    Empleado actEmp = new Empleado();
+                    actEmp.actualizarEmpleado();
                     break;
                 case 4:
-                    ListaEmpleado listaEmp = new ListaEmpleado();
-                    
+                    salarioEmpleado actualizarSalario = new salarioEmpleado();
+                    actualizarSalario.actualizarEmpleado();
                     break;
-
                 case 5:
+                    salarioEmpleado nominaSalario = new salarioEmpleado();
+                    nominaSalario.generarNomina();
+                    break;
+                case 6:
                     salir = true;
                     break;
-
                 default:
                     System.out.println("Opción no válida");
             }
-
         }
         return salir;
     }
-
 }
