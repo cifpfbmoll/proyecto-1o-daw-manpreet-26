@@ -12,6 +12,7 @@ import java.io.InputStreamReader;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Scanner;
 
 /**
@@ -33,19 +34,12 @@ public class generarNomina {
     public void generaNomina() throws SQLException, IOException {
 
         Empleado emp1 = new Empleado();
-        SalarioEmpleado salarioEmp = new SalarioEmpleado();
+       
+        String q = "select * from empleado where id =?";
         
-        String query = "select * from empleado where id =?";
-        PreparedStatement pst = conecion_bbdd.establecerConexion().prepareStatement(query);
-        pst.setInt(1, emp1.getId());
-        ResultSet rst = pst.executeQuery();
-        rst.next();
-        rst.close();
-        
-        String q = "select * from salario where id =?";
         PreparedStatement ps = conecion_bbdd.establecerConexion().prepareStatement(q);
-        rst = pst.executeQuery();
-
+        ps.setInt(1, emp1.getId());
+        ResultSet rst = ps.executeQuery();
         
         while (rst.next()) {
             FileWriter fstream = new FileWriter("manpreet2.txt");
@@ -57,17 +51,28 @@ public class generarNomina {
             emp1.setNombre(lector.next());
 
             br.write("Salario Basico");
-            salarioEmp.getSalarioBasico();
+            emp1.getSalarioBasico();
 
             br.write("irpf");
-            salarioEmp.getIrpf();
+            emp1.getIrpf();
 
             br.write("Base de cotitzacion");
-            salarioEmp.getBaseDeCotitzacio();
+            emp1.getBaseDeCotitzacion();
 
             br.write("Salario Net");
-            salarioEmp.calculaSalario();
+            emp1.calculaSalario();
         }
+        
+        String query = "update from empleado where id =?";
+        
+        PreparedStatement pst = conecion_bbdd.establecerConexion().prepareStatement(query);
+        String sql = "select id from empleado";
+        PreparedStatement ps2 = conecion_bbdd.establecerConexion().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        
+        pst.setInt(1, emp1.getId());
+        pst.executeUpdate();
+        
+        
     }
 
 }

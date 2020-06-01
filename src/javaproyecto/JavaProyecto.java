@@ -46,108 +46,34 @@ public class JavaProyecto {
         while (miConexion != null) {
             int opcion;
             System.out.println("-----MENU-------");
-            System.out.println("1. Registrar");
-            System.out.println("2. Actualizar");
-            System.out.println("3. Reporte");
-            System.out.println("4. Salida");
+            System.out.println("1. Agregar Empleados");
+            System.out.println("2. Actualizar Los datos de los Empleados");
+            System.out.println("3. Generar Nomina");
+            System.out.println("4. Lista De Empleados");
+            System.out.println("5. Salida");
             System.out.println("Escribe una de las opciones");
             opcion = lector.nextInt();
             switch (opcion) {
 
                 case 1:
-                    int opcions;
-                    boolean exit = false;
-                    while (!exit) {
-                        System.out.println("1. AgregarNuevo Empleado");
-                        System.out.println("2. Salario del Empleado");
-                        System.out.println("3. Lista de Empleados");
-                        System.out.println("4. Volver Menu principal");
-                        opcions = lector.nextInt();
-                        switch (opcions) {
-                            case 1:
-                                Empleado emp = new Empleado();
-                                emp.agregarNuevoEmpleado();
-                                break;
-                            case 2:
-                                SalarioEmpleado salEmp = new SalarioEmpleado();
-                                salEmp.salarioSql();
-                                break;
-                            case 3:
-                                ListaEmpleado listEmp = new ListaEmpleado();
-                                listEmp.listaDeEmpleado();
-                                break;
-                            case 4:
-                                System.out.println("Has selecionado opcion de volver a menu principal");
-                                exit = true;
-                                break;
-                            default:
-                                System.out.println("Opción no válida");
-                        }
-                    }
-
+                    Empleado emp = new Empleado();
+                    emp.agregarNuevoEmpleado();
+                            
                     break;
                 case 2:
-                    int alternativa;
-                    boolean salida = false;
-                    while (!salida) {
-                        System.out.println("1. Actualizar salario");
-                        System.out.println("2. Actualizar los datos de los empleados");
-                        System.out.println("3. Asistencia");
-                        System.out.println("Volver a menu principal");
-                        alternativa = lector.nextInt();
-                        switch (alternativa) {
-                            case 1:
-                                actualitzarSalario salarioEmp = new actualitzarSalario();
-                                salarioEmp.actulitzaSalarioDeEmpleado();
-                                break;
-                            case 2:
-                                actualitzarEmpleados actEmp = new actualitzarEmpleados();
-                                actEmp.actualizarEmpleado();
-                                break;
-                            case 3:
-                                asistencia asis = new asistencia();
-                                asis.asistenciaEmp();
-                                break;
-                            case 4:
-                                System.out.println("Has selecionado opcion de volver a menu principal");
-                                salida = true;
-                                break;
-                            default:
-                                System.out.println("Opción no válida");
-
-                        }
-                    }
-
+                    actualitzarEmpleados actEmp = new actualitzarEmpleados();
+                    actEmp.actualizarEmpleado();
                     break;
                 case 3:
-                    int opciones;
-                    boolean dejar = false;
-                    while (!dejar) {
-                        System.out.println("Generar Nomina");
-                        System.out.println("Lista de asistencia de los empleados");
-                        System.out.println("Volver al Menu principal");
-                        opciones = lector.nextInt();
-                        switch (opciones) {
-                            case 1:
-                                generarNomina nomina = new generarNomina();
-                                nomina.generaNomina();
-                                break;
-                            case 2:
-                                listaDeAsistencia listAsistencia = new listaDeAsistencia();
-                                listAsistencia.listaDeAsistencia();
-                                break;
-                            case 3:
-                                System.out.println("Has selecionado la opcion para Vover menu principal");
-                                dejar = true;
-                                break;
-                            default:
-                                System.out.println("Opción no válida");
-                        }
-                    }
-
+                    generarNomina generNomina = new generarNomina();
+                    generNomina.generaNomina();
+                    break;
+                case 4:
+                    ListaEmpleado listaEmp = new ListaEmpleado();
+                    
                     break;
 
-                case 4:
+                case 5:
                     salir = true;
                     break;
 
