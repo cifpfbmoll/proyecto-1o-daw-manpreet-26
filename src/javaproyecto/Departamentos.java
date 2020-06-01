@@ -55,5 +55,6 @@ public class Departamentos {
         pst.setInt(1, id);
         pst.setString(2, nombreDepartamento);
         pst.executeUpdate();
+        
     }
 }
