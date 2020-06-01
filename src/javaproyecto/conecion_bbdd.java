@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+
 /**
  *
  * @author luban
@@ -53,7 +54,9 @@ public class conecion_bbdd {
      */
     public static Connection establecerConexion() throws SQLException {
         Connection con = DriverManager.getConnection(getDatabase(), getUser(), getPassword());
+        
         return con;
+        
     }
 
     

@@ -36,7 +36,7 @@ public class Sesion {
 
         if (usuario != null && contraseña != null) {
             String query = "select * from iniciar_sesion where  usuario  =?  and contraseña =?";
-            System.out.println(query);
+            
             PreparedStatement ps = miconexion.prepareStatement(query);
 
             ps.setString(1, usuario);

@@ -20,8 +20,10 @@ public class JavaProyecto {
     static Scanner lector = new Scanner(System.in);
 
     /**
-     * metodo main del proyecto que primero hace conecion con base de dato,si establece conecion,
-     * despues de esto podemos trabajar con el proyecto y ejecuta el menu.....
+     * metodo main del proyecto que primero hace conecion con base de dato,si
+     * establece conecion, despues de esto podemos trabajar con el proyecto y
+     * ejecuta el menu.....
+     *
      * @param args the command line arguments
      * @throws SQLException excepcion de sql
      * @throws IOException excepcion de io
@@ -42,8 +44,15 @@ public class JavaProyecto {
     public static boolean mostrarMenuUsuarioRegistrado(Connection miConexion, boolean salir) throws SQLException, IOException {
 
         while (miConexion != null) {
-
-            switch (pedirMenu()) {
+            int opcion;
+            System.out.println("-----MENU-------");
+            System.out.println("1. Registrar");
+            System.out.println("2. Actualizar");
+            System.out.println("3. Reporte");
+            System.out.println("4. Salida");
+            System.out.println("Escribe una de las opciones");
+            opcion = lector.nextInt();
+            switch (opcion) {
 
                 case 1:
                     int opcions;
@@ -56,15 +65,16 @@ public class JavaProyecto {
                         opcions = lector.nextInt();
                         switch (opcions) {
                             case 1:
-                                Empleado newEmp = new Empleado();
-                                newEmp.agregarNuevoEmpleado();
+                                Empleado emp = new Empleado();
+                                emp.agregarNuevoEmpleado();
                                 break;
                             case 2:
                                 SalarioEmpleado salEmp = new SalarioEmpleado();
                                 salEmp.salarioSql();
                                 break;
                             case 3:
-                                ListaEmpleado.listaDeEmpleado();
+                                ListaEmpleado listEmp = new ListaEmpleado();
+                                listEmp.listaDeEmpleado();
                                 break;
                             case 4:
                                 System.out.println("Has selecionado opcion de volver a menu principal");
@@ -147,21 +157,6 @@ public class JavaProyecto {
 
         }
         return salir;
-    }
-
-    private static int pedirMenu() {
-        int opcion;
-
-        System.out.println("-----MENU-------");
-        System.out.println("Registrar");
-        System.out.println("Actualizar");
-        System.out.println("Reporte");
-        System.out.println("Salida");
-        System.out.println("Escribe una de las opciones");
-        opcion = lector.nextInt();
-
-        return lector.nextInt();
-
     }
 
 }

@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -24,7 +25,11 @@ public class ListaEmpleado {
      * @throws IOException esto excepcion es interrumpted exception
      */
     public static void listaDeEmpleado() throws SQLException, IOException {
-        String query = "select * from empleados";
+        
+        ArrayList <Empleado> listaEmp = new ArrayList <Empleado>();
+        listaEmp.listIterator();
+        
+        String query = "select * from empleado";
         PreparedStatement ps = conecion_bbdd.establecerConexion().prepareStatement(query);
 
         ResultSet rs = ps.executeQuery();

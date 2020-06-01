@@ -24,6 +24,7 @@ public class asistencia {
 
     /**
      * constructor con parametros
+     *
      * @param asistir asistencia
      * @param fecha fecha de asistencia
      */
@@ -40,6 +41,7 @@ public class asistencia {
 
     /**
      * getter de asistencia
+     *
      * @return asistencia que es tipo de boolean
      */
     public boolean isAsistir() {
@@ -48,6 +50,7 @@ public class asistencia {
 
     /**
      * setter de asistencia
+     *
      * @param asistir asistencia de empleado
      */
     public void setAsistir(boolean asistir) {
@@ -56,6 +59,7 @@ public class asistencia {
 
     /**
      * getter de fecha
+     *
      * @return fecha
      */
     public Date getFecha() {
@@ -64,6 +68,7 @@ public class asistencia {
 
     /**
      * setter de fecha
+     *
      * @param fecha fecha
      */
     public void setFecha(Date fecha) {
@@ -71,18 +76,22 @@ public class asistencia {
     }
 
     /**
-     * metodo para asistir los empleados 
-     * @throws SQLException esto es para buscar algun error 
+     * metodo para asistir los empleados
+     *
+     * @throws SQLException esto es para buscar algun error
      */
     public void asistenciaEmp() throws SQLException {
         Empleado emp = new Empleado();
         String q = "insert into asistencia (asistir) values(?) where id =?";
         PreparedStatement pst = conecion_bbdd.establecerConexion().prepareStatement(q);
+        pst.setBoolean(1, asistir);
+        pst.setInt(2, emp.getId());
         ResultSet rst = pst.executeQuery();
 
-        while (rst.next()) {
-            pst.setBoolean(1, asistir);
-            pst.setInt(2, emp.getId());
+        if(rst.next()){
+            System.out.println("He insertado");
+        }else{
+            System.out.println("tiene error");
         }
     }
 }
