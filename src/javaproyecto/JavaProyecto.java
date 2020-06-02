@@ -31,9 +31,6 @@ public class JavaProyecto {
             Connection miConexion = establecerConexion();
             if (Sesion.iniciarSesion(miConexion)) {
                 salir = mostrarMenuUsuarioRegistrado(miConexion, salir);
-            }else{
-                salir= true;
-                
             }
 
         }
@@ -85,7 +82,7 @@ public class JavaProyecto {
                     generaNomi.generaNomina();
                     break;
                 case 7:
-                    salida = true;
+                    salir = true;
                     break;
                 default:
                     System.out.println("Opción no válida");

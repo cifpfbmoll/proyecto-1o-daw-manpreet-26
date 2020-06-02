@@ -44,7 +44,7 @@ public class Sesion {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                System.out.println("Conecctado");
+                System.out.println("Conectado");
                 ifSesion = true;
 
             } else {
