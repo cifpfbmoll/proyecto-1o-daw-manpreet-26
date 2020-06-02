@@ -5,7 +5,8 @@
  */
 package javaproyecto;
 
-
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
@@ -157,9 +158,24 @@ writer.writeAll(myResultSet, includeHeaders);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        }
-
     }
-    
-     
 
+    public void creaArchivo() {
+        try {
+            String content = "This is the content to write into file";
+
+            File file = new File("filename.txt");
+
+            FileWriter fw = new FileWriter(file.getAbsoluteFile());
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(content);
+            bw.close();
+
+            System.out.println("Done");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
