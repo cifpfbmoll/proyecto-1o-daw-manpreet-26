@@ -6,6 +6,7 @@
 package javaproyecto;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -14,7 +15,6 @@ import java.util.Scanner;
  * @author luban
  */
 public class Empleado {
-
     private int id;
     private String nombre;
     private String apellido1;
@@ -25,7 +25,7 @@ public class Empleado {
     private int depId;
 
     Scanner lector = new Scanner(System.in);
-
+    
     public Empleado() {
     }
 
@@ -40,11 +40,11 @@ public class Empleado {
         this.depId = depId;
     }
 
-    public int getId() {
+    public int getEmpId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setEmpId(int id) {
         this.id = id;
     }
 
@@ -103,61 +103,83 @@ public class Empleado {
     public void setDepId(int depId) {
         this.depId = depId;
     }
-
-    public void agregarEmpleado() throws SQLException {
+    
+    
+    public void agregarEmpleado() throws SQLException{
         this.id = id++;  //autoincrement
-        System.out.println("El nombre del empleado es : ");
-        this.setNombre(lector.next());
-        System.out.println("El primer apellido del empleado es : ");
-        this.setApellido1(lector.next());
-        System.out.println("El segundo apellido del empleado es : ");
-        this.setApellido2(lector.next());
-        System.out.println("El correo del empelado es : ");
-        this.setCorreo(lector.next());
-        System.out.println("El movil del empleado es : ");
-        this.setMovil(lector.nextInt());
-        System.out.println("El id de departamento del empleado es : ");
-        this.setDepId(lector.nextInt());
-        String query = "insert into empleado(empId,nombre,apellido1,apellido2,correo,movil,depId) values (null,?,?,?,?,?,?)";
-        PreparedStatement pst = conecion_bbdd.establecerConexion().prepareStatement(query);
-
-        pst.setString(1, nombre);
-        pst.setString(2, apellido1);
-        pst.setString(3, apellido2);
-        pst.setString(4, correo);
-        pst.setInt(5, movil);
-        pst.setInt(6, depId);
-        pst.executeUpdate();
+            System.out.println("El nombre del empleado es : ");
+            this.setNombre(lector.next());
+            System.out.println("El primer apellido del empleado es : ");
+            this.setApellido1(lector.next());
+            System.out.println("El segundo apellido del empleado es : ");
+            this.setApellido2(lector.next());
+            System.out.println("El correo del empelado es : ");
+            this.setCorreo(lector.next());
+            System.out.println("El movil del empleado es : ");
+            this.setMovil(lector.nextInt());
+            System.out.println("El id de departamento del empleado es : ");
+            this.setDepId(lector.nextInt());
+            String query = "insert into empleado(empId,nombre,apellido1,apellido2,correo,movil,depId) values (null,?,?,?,?,?,?)";
+            PreparedStatement pst = conecion_bbdd.establecerConexion().prepareStatement(query);
+            
+            pst.setString(1, nombre);
+            pst.setString(2, apellido1);
+            pst.setString(3,apellido2);
+            pst.setString(4, correo);
+            pst.setInt(5, movil);
+            pst.setInt(6, depId);
+            pst.executeUpdate();
     }
-
-    public void actualizarEmpleado() throws SQLException {
-        System.out.println("El nombre del empleado es : ");
-        this.setNombre(lector.next());
-        System.out.println("El primer apellido del empleado es : ");
-        this.setApellido1(lector.next());
-        System.out.println("El segundo apellido del empleado es : ");
-        this.setApellido2(lector.next());
-        System.out.println("El correo del empelado es : ");
-        this.setCorreo(lector.next());
-        System.out.println("El movil del empleado es : ");
-        this.setMovil(lector.nextInt());
-        System.out.println("El id de departamento del empleado es : ");
-        this.setDepId(lector.nextInt());
-        System.out.println("introduce el id del empleado ");
-        this.setId(lector.nextInt());
-
-        String q = "update empleado set nombre =?,apellido1=?,apellido2=?,correo=?,movil=?,depId=? where empId =?";
-        PreparedStatement ps = conecion_bbdd.establecerConexion().prepareStatement(q);
-
-        ps.setString(1, nombre);
-        ps.setString(2, apellido1);
-        ps.setString(3, apellido2);
-        ps.setString(4, correo);
-        ps.setInt(5, movil);
-        ps.setInt(6, depId);
-        ps.setInt(7, id);
-        ps.executeUpdate();
-
+            
+    public void actualizarEmpleado() throws SQLException{
+            mostrarDatosDeEmpleados();
+        
+            System.out.println("El nombre del empleado es : ");
+            this.setNombre(lector.next());
+            System.out.println("El primer apellido del empleado es : ");
+            this.setApellido1(lector.next());
+            System.out.println("El segundo apellido del empleado es : ");
+            this.setApellido2(lector.next());
+            System.out.println("El correo del empelado es : ");
+            this.setCorreo(lector.next());
+            System.out.println("El movil del empleado es : ");
+            this.setMovil(lector.nextInt());
+            System.out.println("El id de departamento del empleado es : ");
+            this.setDepId(lector.nextInt());
+            System.out.println("introduce el id del empleado ");
+            this.setEmpId(lector.nextInt());
+            
+            String q = "update empleado set nombre =?,apellido1=?,apellido2=?,correo=?,movil=?,depId=? where empId =?";
+            PreparedStatement ps = conecion_bbdd.establecerConexion().prepareStatement(q);
+            
+            ps.setString(1, nombre);
+            ps.setString(2, apellido1);
+            ps.setString(3,apellido2);
+            ps.setString(4, correo);
+            ps.setInt(5, movil);
+            ps.setInt(6, depId);
+            ps.setInt(7, id);
+            ps.executeUpdate();
+            
     }
+    public void mostrarDatosDeEmpleados() throws SQLException {
 
-}
+        try {
+            String q = "select empId,nombre,apellido1,apellido2,correo,movil,depId from empleado";
+            PreparedStatement psmnt = conecion_bbdd.establecerConexion().prepareStatement(q);
+            ResultSet rs = psmnt.executeQuery();
+
+            while (rs.next()) {
+                System.out.println("empID : " + rs.getInt(1));
+                System.out.println("nombre : " + rs.getString(2));
+                System.out.println("apellido1 : " + rs.getString(3));
+                System.out.println("apellido2 : " + rs.getString(4));
+                System.out.println("correo : " + rs.getString(5));
+                System.out.println("movil : " + rs.getInt(6));
+                System.out.println("depId : " + rs.getInt(7));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    
+}}

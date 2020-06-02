@@ -72,11 +72,12 @@ public class JavaProyecto {
                     break;
                 case 4:
                     salarioEmpleado actualizarSalario = new salarioEmpleado();
+                    actualizarSalario.mostrarSalario();
                     actualizarSalario.actualizarEmpleado();
                     break;
                 case 5:
-                    salarioEmpleado nominaSalario = new salarioEmpleado();
-                    nominaSalario.generarNomina();
+                    generarNomina generaNomi = new generarNomina();
+                    generaNomi.generaNomina();
                     break;
                 case 6:
                     salir = true;
