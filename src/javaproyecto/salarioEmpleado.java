@@ -168,23 +168,5 @@ public class salarioEmpleado extends Empleado {
             e.printStackTrace();
         }
     }
-    /*public void mostrarDatosDeEmpleados() throws SQLException {
-
-        try {
-            String q = "select empId,nombre,apellido1,apellido2,correo,movil,depId from empleado";
-            PreparedStatement psmnt = conecion_bbdd.establecerConexion().prepareStatement(q);
-            ResultSet rs = psmnt.executeQuery();
-
-            while (rs.next()) {
-                System.out.println("empID : " + rs.getInt(1));
-                System.out.println("nombre : " + rs.getString(2));
-                System.out.println("apellido1 : " + rs.getString(3));
-                System.out.println("apellido2 : " + rs.getString(4));
-                System.out.println("correo : " + rs.getString(5));
-                System.out.println("movil : " + rs.getInt(6));
-                System.out.println("depId : " + rs.getInt(7));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
+   
 }
