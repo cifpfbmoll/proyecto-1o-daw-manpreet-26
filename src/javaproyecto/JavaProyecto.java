@@ -1,4 +1,4 @@
-/*
+                    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -23,6 +23,12 @@ public class JavaProyecto {
      */
     static Scanner lector = new Scanner(System.in);
 
+    /**
+     * clase main que tiene connection con que hemos conectado ccon el base de datos y menu principal
+     * @param args the command line arguments
+     * @throws SQLException excepcioon de tipo sql
+     * @throws IOException excepcion 
+     */
     public static void main(String[] args) throws SQLException, IOException {
         boolean salir = false;
 
@@ -32,17 +38,22 @@ public class JavaProyecto {
             if (Sesion.iniciarSesion(miConexion)) {
                 salir = mostrarMenuUsuarioRegistrado(miConexion, salir);
             }
-
         }
     }
 
+    /**
+     * metodo para mostrar menu despues de conectar con bbdd
+     * @param miConexion connectiond  de bbdd
+     * @param salir  para salir el menu
+     * @return salir de bbdd
+     * @throws SQLException    excepcion de sql
+     * @throws IOException excepcion de io
+     */
     public static boolean mostrarMenuUsuarioRegistrado(Connection miConexion, boolean salir) throws SQLException, IOException {
-  
-        
+
         boolean salida = false;
-        while (miConexion != null);
-{
-            
+        while (miConexion != null) {
+
             int opcion;
             System.out.println("-----MENU-------");
             System.out.println("1. Agregar Nuevo Empleado");
@@ -63,7 +74,7 @@ public class JavaProyecto {
                     salarioEmpleado salEmp = new salarioEmpleado();
                     salEmp.agregarEmpleado();
                     break;
-                case 3 :
+                case 3:
                     Departamentos dep = new Departamentos();
                     dep.agregarDepartamento();
                     break;
@@ -80,9 +91,10 @@ public class JavaProyecto {
                 case 6:
                     generarNomina generaNomi = new generarNomina();
                     generaNomi.generaNomina();
+                    generaNomi.creaArchivo();
                     break;
                 case 7:
-                    salir = true;
+                    salida = true;
                     break;
                 default:
                     System.out.println("Opción no válida");
@@ -91,3 +103,4 @@ public class JavaProyecto {
         return salir;
     }
 }
+

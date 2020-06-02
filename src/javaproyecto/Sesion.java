@@ -29,9 +29,10 @@ public class Sesion {
     public static boolean iniciarSesion(Connection miconexion) throws SQLException {
 
         boolean ifSesion = false;
+        System.out.println("Conecta con base de dato");
         System.out.println("Usuario : ");
         String usuario = lector.next();
-        System.out.println("Contraseña : ");
+        System.out.println("Contrasena : ");
         String contraseña = lector.next();
 
         if (usuario != null && contraseña != null) {
