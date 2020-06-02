@@ -17,17 +17,12 @@ import static javaproyecto.conecion_bbdd.establecerConexion;
  */
 public class JavaProyecto {
 
+    /**
+     * @param args the command line arguments
+     *
+     */
     static Scanner lector = new Scanner(System.in);
 
-    /**
-     * metodo main del proyecto que primero hace conecion con base de dato,si
-     * establece conecion, despues de esto podemos trabajar con el proyecto y
-     * ejecuta el menu.....
-     *
-     * @param args the command line arguments
-     * @throws SQLException excepcion de sql
-     * @throws IOException excepcion de io
-     */
     public static void main(String[] args) throws SQLException, IOException {
         boolean salir = false;
 
@@ -36,6 +31,9 @@ public class JavaProyecto {
             Connection miConexion = establecerConexion();
             if (Sesion.iniciarSesion(miConexion)) {
                 salir = mostrarMenuUsuarioRegistrado(miConexion, salir);
+            }else{
+                salir= true;
+                
             }
 
         }
@@ -43,44 +41,51 @@ public class JavaProyecto {
 
     public static boolean mostrarMenuUsuarioRegistrado(Connection miConexion, boolean salir) throws SQLException, IOException {
   
+        
         boolean salida = false;
-        while (miConexion != null) {
+        while (miConexion != null);
+{
+            
             int opcion;
             System.out.println("-----MENU-------");
             System.out.println("1. Agregar Nuevo Empleado");
-            System.out.println("2. Agregar Nuevo Departamento");
-            System.out.println("3. Actualizar Datos de Empleado");
-            System.out.println("4. Actualizar Salario De Empleado");
-            System.out.println("5. Generar Nomina");
-            System.out.println("6. Salida");
+            System.out.println("2. Agregar Nuevo salario");
+            System.out.println("3. Agregar nuevo Departamento");
+            System.out.println("4. Actualizar Datos de Empleado");
+            System.out.println("5. Actualizar Salario De Empleado");
+            System.out.println("6. Generar Nomina");
+            System.out.println("7. Salida");
             System.out.println("Escribe una de las opciones");
             opcion = lector.nextInt();
             switch (opcion) {
                 case 1:
                     Empleado emp = new Empleado();
                     emp.agregarEmpleado();
+                    break;
+                case 2:
                     salarioEmpleado salEmp = new salarioEmpleado();
                     salEmp.agregarEmpleado();
                     break;
-                case 2:
+                case 3 :
                     Departamentos dep = new Departamentos();
                     dep.agregarDepartamento();
                     break;
-                case 3:
+                case 4:
                     Empleado actEmp = new Empleado();
+                    actEmp.mostrarDatosDeEmpleados();
                     actEmp.actualizarEmpleado();
                     break;
-                case 4:
+                case 5:
                     salarioEmpleado actualizarSalario = new salarioEmpleado();
                     actualizarSalario.mostrarSalario();
                     actualizarSalario.actualizarEmpleado();
                     break;
-                case 5:
+                case 6:
                     generarNomina generaNomi = new generarNomina();
                     generaNomi.generaNomina();
                     break;
-                case 6:
-                    salir = true;
+                case 7:
+                    salida = true;
                     break;
                 default:
                     System.out.println("Opción no válida");
